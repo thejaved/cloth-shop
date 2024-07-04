@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const OrderScreen = () => {
+const SplashScreen = () => {
   return (
     <View>
-      <Text>OrderScreen</Text>
+      <Text>SplashScreen</Text>
     </View>
   );
 };
 
-export default OrderScreen;
+export default SplashScreen;
 
 const styles = StyleSheet.create({});
