@@ -1,11 +1,14 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+import Header from '../components/common/Header';
+import ScreenContainer from '../components/common/ScreenContainer';
+import colors from '../styles/colors';
 
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
-    </View>
+    <ScreenContainer backgroundColor={colors.white}>
+      <Header />
+    </ScreenContainer>
   );
 };
 
