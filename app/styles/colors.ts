@@ -6,6 +6,8 @@ const colors = {
   border: '#bdc3c7',
   error: '#e74c3c',
   success: '#27ae60',
+  white: '#ffffff',
+  black: '#000000',
 };
 
 export default colors;

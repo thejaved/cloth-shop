@@ -7,6 +7,7 @@ import {
   HomeScreen,
   OrderScreen,
   ProfileScreen,
+  SplashScreen,
 } from '../screens';
 
 const Stack = createStackNavigator();
@@ -14,7 +15,10 @@ const Stack = createStackNavigator();
 const MainNavigator: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="SplashScreen"
+        screenOptions={{headerShown: false}}>
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="AuthScreen" component={AuthScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Cart" component={CartScreen} />

@@ -29,6 +29,10 @@ const commonStyles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
   },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default commonStyles;
