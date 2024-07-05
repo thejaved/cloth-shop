@@ -13,7 +13,9 @@ import ProductCard2 from '../components/common/ProductCard2';
 
 const HomeScreen = () => {
   return (
-    <ScreenContainer backgroundColor={colors.background}>
+    <ScreenContainer
+      backgroundColor={colors.background}
+      barStyle="dark-content">
       <Header />
       <SearchBar />
       <HeadTitle title="Popular Product" />

@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   },
   seeAllText: {
     color: colors.grey,
+    fontFamily: fonts.regular,
     fontSize: responsiveFontSize(2),
   },
 });
