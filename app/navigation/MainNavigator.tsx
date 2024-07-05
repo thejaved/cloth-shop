@@ -9,6 +9,7 @@ import {
   ProfileScreen,
   SplashScreen,
 } from '../screens';
+import OwnBottomTabs from './OwnBottomTabs';
 
 const Stack = createStackNavigator();
 
@@ -20,10 +21,7 @@ const MainNavigator: React.FC = () => {
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="AuthScreen" component={AuthScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Cart" component={CartScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Order" component={OrderScreen} />
+        <Stack.Screen name="Home" component={OwnBottomTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,7 +1,6 @@
 import React from 'react';
 import {TextInput, TextInputProps, StyleSheet, View} from 'react-native';
 import colors from '../../styles/colors';
-import commonStyles from '../../styles/common';
 import {responsiveHeight} from 'react-native-responsive-dimensions';
 
 interface InputProps extends TextInputProps {

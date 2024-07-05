@@ -22,8 +22,12 @@
       "sha1": "76ea5d4c70539ad9b0e7faf7e4fbe3bae8a961c7"
     },
     {
+      "path": "app/assets/fonts/OpenSans-SemiBold.ttf",
+      "sha1": "9b1adfbc773bb8bd1e6c4ca85c34441a43c2bc54"
+    },
+    {
       "path": "app/assets/fonts/index.ts",
-      "sha1": "f0a5c41c18091b6fc0b6cbd888597266268b117e"
+      "sha1": "f634b4a7c975797682d11673235ff1a55a3cdba4"
     }
   ]
 }

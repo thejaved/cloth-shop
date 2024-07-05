@@ -1,6 +1,7 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, ViewStyle} from 'react-native';
+import colors from '../../styles/colors';
 import {responsiveWidth} from 'react-native-responsive-dimensions';
+import {StyleSheet, TouchableOpacity, ViewStyle} from 'react-native';
 
 interface IconButtonProps {
   Icon: React.ElementType;
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f2f6fd',
+    backgroundColor: colors.white,
     width: responsiveWidth(12),
     height: responsiveWidth(12),
     borderRadius: responsiveWidth(2),

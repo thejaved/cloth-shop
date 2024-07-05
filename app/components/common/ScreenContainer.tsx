@@ -8,6 +8,7 @@ import {
   StatusBarStyle,
   ViewStyle,
   StyleProp,
+  ScrollView,
 } from 'react-native';
 import colors from '../../styles/colors';
 
@@ -33,7 +34,9 @@ const ScreenContainer: React.FC<ScreenContainerProps> = ({
         {...props}
       />
       <SafeAreaView style={[styles.container, containerStyle]}>
-        <View style={styles.mainContainer}>{children}</View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.mainContainer}>{children}</View>
+        </ScrollView>
       </SafeAreaView>
     </>
   );
@@ -44,10 +47,10 @@ export default ScreenContainer;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.background,
   },
   mainContainer: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.background,
   },
 });

@@ -4,4 +4,5 @@ export default {
   italic: 'OpenSans-Italic',
   medium: 'OpenSans-Medium',
   regular: 'OpenSans-Regular',
+  semiBold: 'OpenSans-SemiBold',
 };

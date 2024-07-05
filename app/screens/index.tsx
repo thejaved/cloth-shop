@@ -4,3 +4,4 @@ export {default as AuthScreen} from './AuthScreen';
 export {default as OrderScreen} from './OrderScreen';
 export {default as SplashScreen} from './SplashScreen';
 export {default as ProfileScreen} from './ProfileScreen';
+export {default as WishlistScreen} from './WishlistScreen';
