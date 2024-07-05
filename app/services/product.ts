@@ -1,19 +1,11 @@
 import api from '../utils/api';
 
-export const fetchProducts = async () => {
-  try {
-    const response = await api.get('/products');
-    return response.data;
-  } catch (error: any) {
-    throw new Error(error.response?.data?.message || error.message);
-  }
+export const getProducts = async () => {
+  const response = await api.get('/product');
+  return response.data;
 };
 
-export const fetchProductById = async (productId: string) => {
-  try {
-    const response = await api.get(`/products/${productId}`);
-    return response.data;
-  } catch (error: any) {
-    throw new Error(error.response?.data?.message || error.message);
-  }
+export const getProductById = async (id: string) => {
+  const response = await api.get(`/product/${id}`);
+  return response.data;
 };

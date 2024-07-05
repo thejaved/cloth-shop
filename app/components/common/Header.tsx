@@ -9,12 +9,26 @@ import {
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
 
-const Header = () => {
+interface HeaderProps {
+  title: string;
+  rightIconName?: string;
+  leftIconName?: string;
+  onLeftPress?: () => void;
+  onRightPress?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({
+  title,
+  leftIconName = 'menu',
+  rightIconName = 'bell',
+  onLeftPress,
+  onRightPress,
+}) => {
   return (
     <View style={styles.container}>
-      <IconButton Icon={Feather} name="menu" />
-      <Text style={styles.headerText}>Home</Text>
-      <IconButton Icon={Feather} name="bell" />
+      <IconButton Icon={Feather} name={leftIconName} onPress={onLeftPress} />
+      <Text style={styles.headerText}>{title}</Text>
+      <IconButton Icon={Feather} name={rightIconName} onPress={onRightPress} />
     </View>
   );
 };

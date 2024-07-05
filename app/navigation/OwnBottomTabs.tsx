@@ -16,13 +16,17 @@ import {
 } from '../screens';
 import fonts from '../assets/fonts';
 
-const OwnBottomTabs = () => {
+interface OwnBottomTabsProps {
+  navigation: any;
+}
+
+const OwnBottomTabs: React.FC<OwnBottomTabsProps> = ({navigation}) => {
   const [selectedTab, setSelectedTab] = useState('home');
 
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        {selectedTab === 'home' && <HomeScreen />}
+        {selectedTab === 'home' && <HomeScreen navigation={navigation} />}
         {selectedTab === 'wishlist' && <WishlistScreen />}
         {selectedTab === 'scan' && <Text>Scan Screen</Text>}
         {selectedTab === 'cart' && <CartScreen />}
