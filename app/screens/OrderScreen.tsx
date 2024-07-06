@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
-import {Header, ScreenContainer} from '../components/common';
+import {Header, ScreenContainer, shadow} from '../components/common';
+import fonts from '../assets/fonts';
 import colors from '../styles/colors';
 import {
   responsiveFontSize,
@@ -9,7 +9,8 @@ import {
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
 import Icon from 'react-native-vector-icons/AntDesign';
-import fonts from '../assets/fonts';
+import Icon1 from 'react-native-vector-icons/Feather';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 type RootStackParamList = {
   OrderScreen: {
@@ -46,69 +47,102 @@ const OrderScreen: React.FC<OrderScreenProps> = ({navigation}) => {
   };
 
   return (
-    <ScreenContainer
-      backgroundColor={colors.white}
-      containerStyle={{backgroundColor: colors.white}}>
-      <Header
-        onLeftPress={() => navigation.goBack()}
-        leftIconName="arrow-left"
-        rightIconName="shopping-bag"
-        title="Product Details"
-      />
-      <Image style={styles.image} source={{uri: imageUrl}} resizeMode="cover" />
-      <View style={styles.shortDetails}>
-        <View>
-          <Text style={styles.nameText}>{name}</Text>
-          <View style={styles.ratingStyle}>
-            <Icon
-              name={'star'}
-              size={responsiveFontSize(2)}
-              color={'#FFD700'}
-            />
-            <Text style={styles.ratingText}>{ratingCount}</Text>
+    <>
+      <ScreenContainer
+        backgroundColor={colors.white}
+        containerStyle={{backgroundColor: colors.white}}>
+        <Header
+          onLeftPress={() => navigation.goBack()}
+          leftIconName="arrow-left"
+          rightIconName="shopping-bag"
+          title="Product Details"
+        />
+        <Image
+          style={styles.image}
+          source={{uri: imageUrl}}
+          resizeMode="cover"
+        />
+        <View style={styles.shortDetails}>
+          <View>
+            <Text style={styles.nameText}>{name}</Text>
+            <View style={styles.ratingStyle}>
+              <Icon
+                name={'star'}
+                size={responsiveFontSize(2)}
+                color={'#FFD700'}
+              />
+              <Text style={styles.ratingText}>{ratingCount}</Text>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.priceTextHead}>Price</Text>
+            <Text style={styles.priceText}>{price}</Text>
           </View>
         </View>
-        <View>
-          <Text style={styles.priceTextHead}>Price</Text>
-          <Text style={styles.priceText}>{price}</Text>
+        <View style={styles.tabContainer}>
+          <TouchableOpacity
+            style={[
+              styles.buttonContainer,
+              activeTab === 'Description' && styles.activeButtonContainer,
+            ]}
+            onPress={() => setActiveTab('Description')}>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === 'Description'
+                  ? styles.activeTabText
+                  : styles.inactiveTabText,
+              ]}>
+              Description
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.buttonContainer,
+              activeTab === 'Review' && styles.activeButtonContainer,
+            ]}
+            onPress={() => setActiveTab('Review')}>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === 'Review'
+                  ? styles.activeTabText
+                  : styles.inactiveTabText,
+              ]}>
+              Review
+            </Text>
+          </TouchableOpacity>
         </View>
-      </View>
-      <View style={styles.tabContainer}>
-        <TouchableOpacity
-          style={[
-            styles.buttonContainer,
-            activeTab === 'Description' && styles.activeButtonContainer,
-          ]}
-          onPress={() => setActiveTab('Description')}>
-          <Text
-            style={[
-              styles.tabText,
-              activeTab === 'Description'
-                ? styles.activeTabText
-                : styles.inactiveTabText,
-            ]}>
-            Description
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.buttonContainer,
-            activeTab === 'Review' && styles.activeButtonContainer,
-          ]}
-          onPress={() => setActiveTab('Review')}>
-          <Text
-            style={[
-              styles.tabText,
-              activeTab === 'Review'
-                ? styles.activeTabText
-                : styles.inactiveTabText,
-            ]}>
-            Review
-          </Text>
+        <View style={styles.contentContainer}>{renderContent()}</View>
+      </ScreenContainer>
+      <View style={styles.bottomStyle}>
+        <View style={styles.countHandler}>
+          <TouchableOpacity style={styles.clickCount}>
+            <Icon
+              name="minus"
+              size={responsiveFontSize(2)}
+              color={colors.primary}
+            />
+          </TouchableOpacity>
+          <Text style={styles.quantityText}>1</Text>
+          <TouchableOpacity style={styles.clickCount}>
+            <Icon
+              name="plus"
+              size={responsiveFontSize(2)}
+              color={colors.primary}
+            />
+          </TouchableOpacity>
+        </View>
+        <TouchableOpacity style={styles.addBagButton}>
+          <Icon1
+            name="shopping-bag"
+            color={colors.white}
+            size={responsiveFontSize(2.5)}
+          />
+          <Text style={styles.bagText}>Add to cart</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.contentContainer}>{renderContent()}</View>
-    </ScreenContainer>
+    </>
   );
 };
 
@@ -180,5 +214,47 @@ const styles = StyleSheet.create({
     fontFamily: fonts.regular,
     fontSize: responsiveFontSize(2),
     color: colors.black,
+    textAlign: 'justify',
+  },
+  bottomStyle: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: responsiveHeight(13),
+    backgroundColor: colors.white,
+    justifyContent: 'space-between',
+    paddingHorizontal: responsiveWidth(5),
+    ...shadow,
+  },
+  countHandler: {
+    width: responsiveWidth(30),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: colors.white,
+    padding: responsiveWidth(2),
+    borderRadius: responsiveWidth(2),
+  },
+  clickCount: {
+    padding: responsiveWidth(2),
+    backgroundColor: colors.alphaPrimary,
+    borderRadius: responsiveWidth(5),
+  },
+  quantityText: {
+    color: colors.black,
+    fontFamily: fonts.regular,
+  },
+  addBagButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: responsiveWidth(4),
+    paddingHorizontal: responsiveWidth(10),
+    backgroundColor: colors.primary,
+    borderRadius: responsiveWidth(2),
+  },
+  bagText: {
+    color: colors.white,
+    marginLeft: responsiveWidth(2),
+    fontFamily: fonts.medium,
   },
 });

@@ -1,5 +1,5 @@
 const colors = {
-  primary: '#FF6969',
+  primary: '#C80036',
   secondary: '#2ecc71',
   background: '#f6f5f5',
   text: '#2c3e50',
@@ -9,6 +9,7 @@ const colors = {
   white: '#ffffff',
   black: '#000000',
   grey: 'grey',
+  alphaPrimary: '#C8003620',
   iconDefault: '#888888',
 };
 

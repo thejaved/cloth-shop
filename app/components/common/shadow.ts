@@ -1,12 +1,13 @@
 import colors from '../../styles/colors';
 
 export default {
-  shadowColor: colors.primary,
+  shadowColor: '#000',
   shadowOffset: {
     width: 0,
-    height: 4,
+    height: 7,
   },
-  shadowOpacity: 0.3,
-  shadowRadius: 4.65,
-  elevation: 10,
+  shadowOpacity: 0.43,
+  shadowRadius: 9.51,
+
+  elevation: 15,
 };
