@@ -1,7 +1,14 @@
 import React, {useState} from 'react';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Alert,
+} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {Header, ScreenContainer, shadow} from '../components/common';
-import fonts from '../assets/fonts';
 import colors from '../styles/colors';
 import {
   responsiveFontSize,
@@ -10,7 +17,7 @@ import {
 } from 'react-native-responsive-dimensions';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/Feather';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import fonts from '../assets/fonts';
 
 type RootStackParamList = {
   OrderScreen: {
@@ -36,7 +43,22 @@ const OrderScreen: React.FC<OrderScreenProps> = ({navigation}) => {
   const [activeTab, setActiveTab] = useState<'Description' | 'Review'>(
     'Description',
   );
+  const [quantity, setQuantity] = useState<number>(1); // Add quantity state
   const {ratingCount, imageUrl, name, price, description} = route.params.item;
+
+  const handleAddToCart = () => {
+    Alert.alert('Success', `Added ${quantity} ${name}(s) to cart`);
+  };
+
+  const increaseQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(prevQuantity => prevQuantity - 1);
+    }
+  };
 
   const renderContent = () => {
     if (activeTab === 'Description') {
@@ -117,15 +139,19 @@ const OrderScreen: React.FC<OrderScreenProps> = ({navigation}) => {
       </ScreenContainer>
       <View style={styles.bottomStyle}>
         <View style={styles.countHandler}>
-          <TouchableOpacity style={styles.clickCount}>
+          <TouchableOpacity
+            style={styles.clickCount}
+            onPress={decreaseQuantity}>
             <Icon
               name="minus"
               size={responsiveFontSize(2)}
               color={colors.primary}
             />
           </TouchableOpacity>
-          <Text style={styles.quantityText}>1</Text>
-          <TouchableOpacity style={styles.clickCount}>
+          <Text style={styles.quantityText}>{quantity}</Text>
+          <TouchableOpacity
+            style={styles.clickCount}
+            onPress={increaseQuantity}>
             <Icon
               name="plus"
               size={responsiveFontSize(2)}
@@ -133,7 +159,7 @@ const OrderScreen: React.FC<OrderScreenProps> = ({navigation}) => {
             />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.addBagButton}>
+        <TouchableOpacity style={styles.addBagButton} onPress={handleAddToCart}>
           <Icon1
             name="shopping-bag"
             color={colors.white}
