@@ -1,11 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {Header, ScreenContainer} from '../components/common';
 
 const ProfileScreen = () => {
   return (
-    <View>
-      <Text>ProfileScreen</Text>
-    </View>
+    <ScreenContainer>
+      <Header title="Profile" />
+    </ScreenContainer>
   );
 };
 

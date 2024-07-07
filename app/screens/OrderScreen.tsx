@@ -18,6 +18,8 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/Feather';
 import fonts from '../assets/fonts';
+import {useDispatch} from 'react-redux';
+import {addToCart} from '../store/reducers/cartReducer';
 
 type RootStackParamList = {
   OrderScreen: {
@@ -40,14 +42,19 @@ interface OrderScreenProps {
 
 const OrderScreen: React.FC<OrderScreenProps> = ({navigation}) => {
   const route = useRoute<OrderScreenRouteProp>();
+  const dispatch = useDispatch();
+
   const [activeTab, setActiveTab] = useState<'Description' | 'Review'>(
     'Description',
   );
-  const [quantity, setQuantity] = useState<number>(1); // Add quantity state
+  const [quantity, setQuantity] = useState<number>(1);
   const {ratingCount, imageUrl, name, price, description} = route.params.item;
 
   const handleAddToCart = () => {
+    const {_id, name, price, imageUrl} = route.params.item;
+    dispatch(addToCart({productId: _id, name, price, imageUrl, quantity}));
     Alert.alert('Success', `Added ${quantity} ${name}(s) to cart`);
+    navigation.navigate('Home');
   };
 
   const increaseQuantity = () => {

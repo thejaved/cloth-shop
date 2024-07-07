@@ -1,11 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {StyleSheet} from 'react-native';
+import {Header, ScreenContainer} from '../components/common';
 
 const WishlistScreen = () => {
   return (
-    <View>
-      <Text>WishlistScreen</Text>
-    </View>
+    <ScreenContainer>
+      <Header title="Wishlist" />
+    </ScreenContainer>
   );
 };
 

@@ -9,13 +9,14 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 interface HeadTitleProps {
   title: string;
+  onPress?: () => void;
 }
 
-const HeadTitle: React.FC<HeadTitleProps> = ({title}) => {
+const HeadTitle: React.FC<HeadTitleProps> = ({title, onPress}) => {
   return (
     <View style={styles.headTitleContainer}>
       <Text style={styles.headTitleText}>{title}</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <Text style={styles.seeAllText}>See all</Text>
       </TouchableOpacity>
     </View>

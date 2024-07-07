@@ -15,6 +15,7 @@ interface ProductCardProps {
   title: string;
   price: string;
   onPress?: () => void;
+  style?: any;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -22,9 +23,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   title,
   price,
   onPress,
+  style,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.cardContainer}>
+    <TouchableOpacity onPress={onPress} style={[styles.cardContainer, style]}>
       <TouchableOpacity style={styles.likeIcons}>
         <AntDesign
           name="hearto"

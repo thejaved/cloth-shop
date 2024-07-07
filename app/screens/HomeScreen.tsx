@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import colors from '../styles/colors';
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {responsiveWidth} from 'react-native-responsive-dimensions';
 import {
   Header,
@@ -32,7 +32,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
       barStyle="dark-content">
       <Header title="Home" />
       <SearchBar />
-      <HeadTitle title="Popular Product" />
+      <HeadTitle
+        title="Popular Product"
+        onPress={() => navigation.navigate('AllProducts')}
+      />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.productContainer}>
           {products.map(item => {

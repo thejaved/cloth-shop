@@ -2,7 +2,7 @@ import React from 'react';
 import OwnBottomTabs from './OwnBottomTabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {AuthScreen, OrderScreen, SplashScreen} from '../screens';
+import {AllProducts, AuthScreen, OrderScreen, SplashScreen} from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +16,7 @@ const MainNavigator: React.FC = () => {
         <Stack.Screen name="AuthScreen" component={AuthScreen} />
         <Stack.Screen name="Home" component={OwnBottomTabs} />
         <Stack.Screen name="OrderScreen" component={OrderScreen} />
+        <Stack.Screen name="AllProducts" component={AllProducts} />
       </Stack.Navigator>
     </NavigationContainer>
   );
