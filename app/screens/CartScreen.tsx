@@ -63,17 +63,12 @@ const CartScreen: React.FC<CartScreenProps> = ({
   };
 
   return (
-    <ScreenContainer
-      backgroundColor={colors.white}
-      barStyle="dark-content"
-      containerStyle={{
-        backgroundColor: colors.white,
-      }}>
+    <ScreenContainer backgroundColor={colors.white} barStyle="dark-content">
       <Header
-        // onLeftPress={() => navigation.goBack()}
-        leftIconName="arrow-left"
-        rightIconName="external-link"
         title="Cart Screen"
+        leftIconName="user"
+        rightIconName="external-link"
+        onLeftPress={() => setSelectedTab('profile')}
       />
       <View style={styles.mainItemContainer}>
         {cartItems.map(item => (
