@@ -46,7 +46,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
                 key={_id}
                 uri={imageUrl}
                 title={name}
-                price={`$${price}`}
+                price={`₹${price}`}
                 onPress={() => navigation.navigate('OrderScreen', {item})}
               />
             );

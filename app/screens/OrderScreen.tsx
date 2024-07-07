@@ -105,7 +105,7 @@ const OrderScreen: React.FC<OrderScreenProps> = ({navigation}) => {
           </View>
           <View>
             <Text style={styles.priceTextHead}>Price</Text>
-            <Text style={styles.priceText}>{price}</Text>
+            <Text style={styles.priceText}>₹{price}</Text>
           </View>
         </View>
         <View style={styles.tabContainer}>
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
   priceTextHead: {
     fontFamily: fonts.regular,
     fontSize: responsiveFontSize(1.8),
-    color: colors.grey,
+    color: colors.gray,
     marginBottom: responsiveWidth(2),
   },
   priceText: {
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
   inactiveTabText: {
-    color: colors.grey,
+    color: colors.gray,
   },
   contentContainer: {
     padding: responsiveWidth(5),

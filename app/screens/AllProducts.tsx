@@ -38,7 +38,7 @@ const AllProducts: React.FC<AllProductsProps> = ({navigation}) => {
                 key={_id}
                 uri={imageUrl}
                 title={name}
-                price={`$${price}`}
+                price={`₹${price}`}
                 onPress={() => navigation.navigate('OrderScreen', {item})}
                 style={styles.productCard}
               />

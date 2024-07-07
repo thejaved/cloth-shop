@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(2.2),
   },
   seeAllText: {
-    color: colors.grey,
+    color: colors.gray,
     fontFamily: fonts.regular,
     fontSize: responsiveFontSize(2),
   },

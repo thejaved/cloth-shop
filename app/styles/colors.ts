@@ -8,7 +8,7 @@ const colors = {
   success: '#27ae60',
   white: '#ffffff',
   black: '#000000',
-  grey: 'grey',
+  gray: 'gray',
   alphaPrimary: '#C8003620',
   iconDefault: '#888888',
 };
