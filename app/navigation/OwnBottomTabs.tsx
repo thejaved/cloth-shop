@@ -26,11 +26,25 @@ const OwnBottomTabs: React.FC<OwnBottomTabsProps> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        {selectedTab === 'home' && <HomeScreen navigation={navigation} />}
-        {selectedTab === 'wishlist' && <WishlistScreen />}
+        {selectedTab === 'home' && (
+          <HomeScreen navigation={navigation} setSelectedTab={setSelectedTab} />
+        )}
+        {selectedTab === 'wishlist' && (
+          <WishlistScreen
+            navigation={navigation}
+            setSelectedTab={setSelectedTab}
+          />
+        )}
         {selectedTab === 'scan' && <Text>Scan Screen</Text>}
-        {selectedTab === 'cart' && <CartScreen />}
-        {selectedTab === 'profile' && <ProfileScreen />}
+        {selectedTab === 'cart' && (
+          <CartScreen navigation={navigation} setSelectedTab={setSelectedTab} />
+        )}
+        {selectedTab === 'profile' && (
+          <ProfileScreen
+            navigation={navigation}
+            setSelectedTab={setSelectedTab}
+          />
+        )}
       </View>
 
       {/* Bottom Tab Bar */}

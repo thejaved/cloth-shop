@@ -15,7 +15,15 @@ import {
 import fonts from '../assets/fonts';
 import colors from '../styles/colors';
 
-const CartScreen: React.FC = () => {
+interface CartScreenProps {
+  navigation: any;
+  setSelectedTab: (tab: string) => void;
+}
+
+const CartScreen: React.FC<CartScreenProps> = ({
+  navigation,
+  setSelectedTab,
+}) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
@@ -90,7 +98,9 @@ const CartScreen: React.FC = () => {
             <Text style={styles.noDataSubText}>
               Looks like you haven't added anything to your cart yet.
             </Text>
-            <TouchableOpacity style={styles.shopButton}>
+            <TouchableOpacity
+              onPress={() => setSelectedTab('home')}
+              style={styles.shopButton}>
               <Text style={styles.shopButtonText}>Start Shopping</Text>
             </TouchableOpacity>
           </View>

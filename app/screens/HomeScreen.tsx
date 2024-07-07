@@ -16,9 +16,13 @@ import {fetchProducts} from '../store/actions/productActions';
 
 interface HomeScreenProps {
   navigation: any;
+  setSelectedTab: (tab: string) => void;
 }
 
-const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
+const HomeScreen: React.FC<HomeScreenProps> = ({
+  navigation,
+  setSelectedTab,
+}) => {
   const dispatch: AppDispatch = useDispatch();
   const products = useSelector((state: RootState) => state.product.products);
 
