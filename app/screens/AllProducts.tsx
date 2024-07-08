@@ -32,15 +32,18 @@ const AllProducts: React.FC<AllProductsProps> = ({navigation}) => {
       <ScrollView>
         <View style={styles.productContainer}>
           {products.map(item => {
-            const {_id, name, price, imageUrl} = item;
+            const {_id, name, price, imageUrl, description, ratingCount} = item;
             return (
               <ProductCard
                 key={_id}
-                uri={imageUrl}
                 title={name}
-                price={`₹${price}`}
-                onPress={() => navigation.navigate('OrderScreen', {item})}
+                price={price}
+                uri={imageUrl}
+                productId={_id}
+                description={description}
+                ratingCount={ratingCount}
                 style={styles.productCard}
+                onPress={() => navigation.navigate('OrderScreen', {item})}
               />
             );
           })}
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    paddingHorizontal: responsiveWidth(2),
+    paddingHorizontal: responsiveWidth(5),
   },
   productCard: {
     width: '47%',

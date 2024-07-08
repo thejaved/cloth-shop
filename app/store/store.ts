@@ -4,20 +4,22 @@ import {
   ThunkAction,
   Action,
 } from '@reduxjs/toolkit';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage for React Native
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistReducer, persistStore} from 'redux-persist';
 import productReducer from './reducers/productReducer';
 import cartReducer from './reducers/cartReducer';
+import wishlistReducer from './reducers/wishlistReducer';
 
 const persistConfig = {
   key: 'root',
-  storage: AsyncStorage, // Use AsyncStorage for React Native
-  whitelist: ['cart'], // Only cart will be persisted
+  storage: AsyncStorage,
+  whitelist: ['cart', 'wishlist'],
 };
 
 const rootReducer = combineReducers({
   product: productReducer,
   cart: cartReducer,
+  wishlist: wishlistReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -38,14 +40,12 @@ const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
   Action<string>
 >;
-
 export const persistor = persistStore(store);
 
 export default store;

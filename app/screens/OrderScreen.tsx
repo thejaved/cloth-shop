@@ -50,6 +50,8 @@ const OrderScreen: React.FC<OrderScreenProps> = ({navigation}) => {
   const [quantity, setQuantity] = useState<number>(1);
   const {ratingCount, imageUrl, name, price, description} = route.params.item;
 
+  console.log('route.params.item', route.params.item);
+
   const handleAddToCart = () => {
     const {_id, name, price, imageUrl} = route.params.item;
     dispatch(addToCart({productId: _id, name, price, imageUrl, quantity}));

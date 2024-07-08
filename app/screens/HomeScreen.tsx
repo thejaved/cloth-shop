@@ -30,6 +30,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  // {ratingCount, imageUrl, name, price, description}
+
   return (
     <ScreenContainer
       backgroundColor={colors.background}
@@ -43,14 +45,16 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.productContainer}>
           {products.map(item => {
-            console.log(item);
-            const {_id, name, price, imageUrl} = item;
+            const {_id, ratingCount, imageUrl, name, price, description} = item;
             return (
               <ProductCard
                 key={_id}
-                uri={imageUrl}
                 title={name}
-                price={`₹${price}`}
+                price={price}
+                uri={imageUrl}
+                productId={_id}
+                description={description}
+                ratingCount={ratingCount}
                 onPress={() => navigation.navigate('OrderScreen', {item})}
               />
             );

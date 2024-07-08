@@ -8,28 +8,63 @@ import {
 } from 'react-native-responsive-dimensions';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import fonts from '../../assets/fonts';
+import {RootState} from '../../store/store';
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from '../../store/reducers/wishlistReducer';
 
 interface ProductCardProps {
   uri: string;
   title: string;
-  price: string;
+  price: number;
+  productId: string;
   onPress?: () => void;
   style?: any;
+  description: string;
+  ratingCount: number;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
   uri,
-  title,
-  price,
-  onPress,
   style,
+  price,
+  title,
+  onPress,
+  productId,
+  description,
+  ratingCount,
 }) => {
+  const dispatch = useDispatch();
+  const wishlist = useSelector((state: RootState) => state.wishlist.items);
+  const isWished = wishlist.some(item => item._id === productId);
+
+  const handleWishlistToggle = () => {
+    if (isWished) {
+      dispatch(removeFromWishlist(productId));
+    } else {
+      dispatch(
+        addToWishlist({
+          description,
+          ratingCount,
+          _id: productId,
+          name: title,
+          price: price,
+          imageUrl: uri,
+        }),
+      );
+    }
+  };
+
   return (
     <TouchableOpacity onPress={onPress} style={[styles.cardContainer, style]}>
-      <TouchableOpacity style={styles.likeIcons}>
+      <TouchableOpacity
+        style={styles.likeButton}
+        onPress={handleWishlistToggle}>
         <AntDesign
-          name="hearto"
+          name={isWished ? 'heart' : 'hearto'}
           size={responsiveFontSize(2)}
           color={colors.white}
         />
@@ -39,7 +74,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {title}
       </Text>
       <StarRating rating={4} />
-      <Text style={styles.priceStyle}>{price}</Text>
+      <Text style={styles.priceStyle}>₹{price}</Text>
     </TouchableOpacity>
   );
 };
@@ -58,7 +93,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: responsiveHeight(15),
   },
-  likeIcons: {
+  likeButton: {
     zIndex: 1,
     position: 'absolute',
     top: responsiveWidth(3),
