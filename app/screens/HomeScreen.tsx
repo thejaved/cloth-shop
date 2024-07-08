@@ -61,14 +61,21 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
       </ScrollView>
       <HeadTitle title="Recently added" />
       <View style={styles.product2Container}>
-        <ProductCard2 />
-        <ProductCard2 />
-        <ProductCard2 />
-        <ProductCard2 />
-        <ProductCard2 />
-        <ProductCard2 />
-        <ProductCard2 />
-        <ProductCard2 />
+        {products.map(item => {
+          const {_id, ratingCount, imageUrl, name, price, description} = item;
+          return (
+            <ProductCard2
+              key={_id}
+              title={name}
+              price={price}
+              uri={imageUrl}
+              productId={_id}
+              description={description}
+              ratingCount={ratingCount}
+              onPress={() => navigation.navigate('OrderScreen', {item})}
+            />
+          );
+        })}
       </View>
     </ScreenContainer>
   );
