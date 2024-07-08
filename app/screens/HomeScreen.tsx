@@ -30,8 +30,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  // {ratingCount, imageUrl, name, price, description}
-
   return (
     <ScreenContainer
       backgroundColor={colors.background}

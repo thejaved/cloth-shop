@@ -28,53 +28,48 @@ const WishlistScreen: React.FC<WishlistScreenProps> = ({
 }) => {
   const wishlist = useSelector((state: RootState) => state.wishlist.items);
 
-  console.log('wishlist', wishlist);
-
   return (
     <ScreenContainer
       backgroundColor={colors.background}
       barStyle="dark-content">
       <Header
         title="Wishlist"
-        onLeftPress={() => navigation.goBack()}
+        onLeftPress={() => setSelectedTab('home')}
         leftIconName="arrow-left"
       />
-      <ScrollView>
-        <View style={styles.productContainer}>
-          {wishlist.length > 0 ? (
-            wishlist.map(item => {
-              console.log('item', item);
-              const {_id, name, price, imageUrl, description, ratingCount} =
-                item;
-              return (
-                <ProductCard
-                  title={name}
-                  price={price}
-                  uri={imageUrl}
-                  key={_id}
-                  productId={_id}
-                  description={description}
-                  ratingCount={ratingCount}
-                  style={styles.productCard}
-                  onPress={() => navigation.navigate('OrderScreen', {item})}
-                />
-              );
-            })
-          ) : (
-            <View style={styles.noDataContainer}>
-              <Text style={styles.noDataText}>Your wishlist is empty</Text>
-              <Text style={styles.noDataSubText}>
-                Looks like you haven't added anything to your wishlist yet.
-              </Text>
-              <TouchableOpacity
-                onPress={() => setSelectedTab('home')}
-                style={styles.shopButton}>
-                <Text style={styles.shopButtonText}>Start Adding</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        </View>
-      </ScrollView>
+      <View style={styles.productContainer}>
+        {wishlist.length > 0 ? (
+          wishlist.map(item => {
+            console.log('item', item);
+            const {_id, name, price, imageUrl, description, ratingCount} = item;
+            return (
+              <ProductCard
+                title={name}
+                price={price}
+                uri={imageUrl}
+                key={_id}
+                productId={_id}
+                description={description}
+                ratingCount={ratingCount}
+                style={styles.productCard}
+                onPress={() => navigation.navigate('OrderScreen', {item})}
+              />
+            );
+          })
+        ) : (
+          <View style={styles.noDataContainer}>
+            <Text style={styles.noDataText}>Your wishlist is empty</Text>
+            <Text style={styles.noDataSubText}>
+              Looks like you haven't added anything to your wishlist yet.
+            </Text>
+            <TouchableOpacity
+              onPress={() => setSelectedTab('home')}
+              style={styles.wishlistButton}>
+              <Text style={styles.wishlistButtonText}>Start Adding</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
     </ScreenContainer>
   );
 };
@@ -118,13 +113,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingHorizontal: responsiveWidth(10),
   },
-  shopButton: {
+  wishlistButton: {
     backgroundColor: colors.primary,
     borderRadius: responsiveWidth(2),
     paddingVertical: responsiveWidth(4),
     paddingHorizontal: responsiveWidth(10),
   },
-  shopButtonText: {
+  wishlistButtonText: {
     textAlign: 'center',
     color: colors.white,
     fontFamily: fonts.semiBold,

@@ -27,8 +27,6 @@ const CartScreen: React.FC<CartScreenProps> = ({
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
-  console.log('cartItems', cartItems);
-
   const ItemRender = ({item}: {item: CartItem}) => {
     const totalPrice = item.price * item.quantity;
 
