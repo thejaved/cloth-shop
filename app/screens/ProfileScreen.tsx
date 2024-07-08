@@ -20,7 +20,7 @@ interface ProfileScreenProps {
 interface MenuItemProps {
   icon: any;
   title: string;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 const ProfileScreen: React.FC<ProfileScreenProps> = ({
@@ -40,7 +40,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
       barStyle="dark-content">
       <Header
         title="Account"
-        // leftIconName="arrow-left"
         onLeftPress={() => navigation.goBack()}
         rightIconName="user"
       />
@@ -57,7 +56,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               />
             }
             title="My Orders"
-            onPress={() => navigation.navigate('MyOrders')}
           />
           <MenuItem
             icon={
@@ -68,7 +66,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               />
             }
             title="Returned Products"
-            onPress={() => navigation.navigate('ReturnedProducts')}
           />
         </View>
 
@@ -83,7 +80,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               />
             }
             title="Personal Info"
-            onPress={() => navigation.navigate('PersonalInfo')}
           />
           <MenuItem
             icon={
@@ -94,7 +90,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               />
             }
             title="Notifications"
-            onPress={() => navigation.navigate('Notifications')}
           />
         </View>
 
@@ -109,7 +104,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               />
             }
             title="Privacy Policy"
-            onPress={() => navigation.navigate('PrivacyPolicy')}
           />
         </View>
 
@@ -124,7 +118,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               />
             }
             title="Help"
-            onPress={() => navigation.navigate('Help')}
           />
           <MenuItem
             icon={
@@ -135,7 +128,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               />
             }
             title="Feedback"
-            onPress={() => navigation.navigate('Feedback')}
           />
           <MenuItem
             icon={
@@ -146,7 +138,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               />
             }
             title="Terms and Conditions"
-            onPress={() => navigation.navigate('TermsAndConditions')}
           />
         </View>
 
@@ -159,7 +150,6 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
             />
           }
           title="Sign Out"
-          onPress={() => navigation.navigate('SignOut')}
         />
       </View>
     </ScreenContainer>
