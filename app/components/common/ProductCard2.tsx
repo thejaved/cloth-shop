@@ -79,5 +79,6 @@ const styles = StyleSheet.create({
   description: {
     color: colors.gray,
     fontFamily: fonts.regular,
+    fontSize: responsiveFontSize(1.5),
   },
 });

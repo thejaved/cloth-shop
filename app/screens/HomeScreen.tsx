@@ -53,7 +53,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
                 productId={_id}
                 description={description}
                 ratingCount={ratingCount}
-                onPress={() => navigation.navigate('OrderScreen', {item})}
+                onPress={() =>
+                  navigation.navigate('ProductDetailsScreen', {item})
+                }
               />
             );
           })}
@@ -72,7 +74,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
               productId={_id}
               description={description}
               ratingCount={ratingCount}
-              onPress={() => navigation.navigate('OrderScreen', {item})}
+              onPress={() =>
+                navigation.navigate('ProductDetailsScreen', {item})
+              }
             />
           );
         })}

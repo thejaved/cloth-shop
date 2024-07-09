@@ -40,7 +40,6 @@ const WishlistScreen: React.FC<WishlistScreenProps> = ({
       <View style={styles.productContainer}>
         {wishlist.length > 0 ? (
           wishlist.map(item => {
-            console.log('item', item);
             const {_id, name, price, imageUrl, description, ratingCount} = item;
             return (
               <ProductCard
@@ -52,7 +51,9 @@ const WishlistScreen: React.FC<WishlistScreenProps> = ({
                 description={description}
                 ratingCount={ratingCount}
                 style={styles.productCard}
-                onPress={() => navigation.navigate('OrderScreen', {item})}
+                onPress={() =>
+                  navigation.navigate('ProductDetailsScreen', {item})
+                }
               />
             );
           })

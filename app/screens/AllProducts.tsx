@@ -43,7 +43,9 @@ const AllProducts: React.FC<AllProductsProps> = ({navigation}) => {
                 description={description}
                 ratingCount={ratingCount}
                 style={styles.productCard}
-                onPress={() => navigation.navigate('OrderScreen', {item})}
+                onPress={() =>
+                  navigation.navigate('ProductDetailsScreen', {item})
+                }
               />
             );
           })}
