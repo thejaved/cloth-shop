@@ -80,6 +80,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({
               />
             }
             title="Personal Info"
+            onPress={() => navigation.navigate('UserInfoScreen')}
           />
           <MenuItem
             icon={

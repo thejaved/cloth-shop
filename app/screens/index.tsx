@@ -6,4 +6,5 @@ export {default as OrderScreen} from './OrderScreen';
 export {default as SplashScreen} from './SplashScreen';
 export {default as ProfileScreen} from './ProfileScreen';
 export {default as WishlistScreen} from './WishlistScreen';
+export {default as UserInfoScreen} from './UserInfoScreen';
 export {default as ProductDetailsScreen} from './ProductDetailsScreen';
