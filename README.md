@@ -1,6 +1,6 @@
 ```css
 src/
-├── assets=/
+├── assets/
 │   └── images/
 ├── components/
 │   ├── Auth/
